@@ -86,6 +86,8 @@ func parseCSV(filePath string) []student {
 		return nil
 	}
 
+	defer f.Close()
+
 	csvReader := csv.NewReader(f)
 	data, err := csvReader.ReadAll()
 	if err != nil {
