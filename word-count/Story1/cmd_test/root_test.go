@@ -77,7 +77,7 @@ func TestLinesCount_ReadProtectedFile(t *testing.T) {
 	old := os.Stdout
 	os.Stdout = w
 
-	mode := os.FileMode(066) // read not allowed
+	mode := os.FileMode(066) // read not allowec
 
 	fileName := "file.txt"
 
