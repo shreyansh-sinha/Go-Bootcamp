@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// check if there exists a file with given parameter
 func isFile(param string) bool {
 
 	fileInfo, err := os.Stat(param)
@@ -21,6 +22,7 @@ func isFile(param string) bool {
 
 }
 
+// check if file with given parameter has read permissions
 func checkFileReadPermissions(param string) bool {
 
 	fileInfo, err := os.Stat(param)
@@ -36,6 +38,7 @@ func checkFileReadPermissions(param string) bool {
 	return false
 }
 
+// check if file or directory exists
 func fileExists(filename string) bool {
 	_, err := os.Stat(filename)
 	return !os.IsNotExist(err)
