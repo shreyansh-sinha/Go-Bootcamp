@@ -6,7 +6,7 @@ import (
 )
 
 // check if there exists a file with given parameter
-func IsFile(param string) bool {
+func isFile(param string) bool {
 
 	fileInfo, err := os.Stat(param)
 	if err != nil {
@@ -22,7 +22,7 @@ func IsFile(param string) bool {
 }
 
 // check if file with given parameter has read permissions
-func CheckFileReadPermissions(param string) bool {
+func checkFileReadPermissions(param string) bool {
 
 	fileInfo, err := os.Stat(param)
 	if err != nil {
@@ -38,7 +38,28 @@ func CheckFileReadPermissions(param string) bool {
 }
 
 // check if file or directory exists
-func FileExists(filename string) bool {
+func fileExists(filename string) bool {
 	_, err := os.Stat(filename)
 	return !os.IsNotExist(err)
+}
+
+// validate file
+func Validate(param string) bool {
+
+	if !fileExists(param) {
+		fmt.Printf("'%s': open: No such file or Directory", param)
+		return false
+	}
+
+	if !isFile(param) {
+		fmt.Printf("'%s': read: Is a directory", param)
+		return false
+	}
+
+	if !checkFileReadPermissions(param) {
+		fmt.Printf("'%s': open: Permission denied", param)
+		return false
+	}
+
+	return true
 }

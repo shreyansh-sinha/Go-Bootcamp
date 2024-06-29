@@ -11,18 +11,9 @@ import (
 
 func WordsCount(param string) {
 
-	if !common.FileExists(param) {
-		fmt.Printf("'%s': open: No such file or Directory", param)
-		return
-	}
+	res := common.Validate(param)
 
-	if !common.IsFile(param) {
-		fmt.Printf("'%s': read: Is a directory", param)
-		return
-	}
-
-	if !common.CheckFileReadPermissions(param) {
-		fmt.Printf("'%s': open: Permission denied", param)
+	if !res {
 		return
 	}
 

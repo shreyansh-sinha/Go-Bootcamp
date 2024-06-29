@@ -76,7 +76,7 @@ func TestWordCount_FileProtected(t *testing.T) {
 	old := os.Stdout
 	os.Stdout = w
 
-	mode := os.FileMode(066) // read not allowec
+	mode := os.FileMode(066) // read not allowed
 
 	fileName := "file.txt"
 
